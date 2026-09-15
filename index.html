@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Campus Connect — your college events notice board." />
+    <title>SJCET CONNECT | Event Notice Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .access-dialog{width:min(470px,92vw)} .access-dialog label{font-size:12px;font-weight:700;display:flex;flex-direction:column;gap:7px;margin-top:15px}.access-dialog input{font:14px "DM Sans";border:1px solid #dcd6ca;border-radius:6px;padding:11px;background:#fff}.access-copy{font-size:14px;line-height:1.5;color:#4a574f;margin:-13px 0 19px}.demo-note{font-size:12px;line-height:1.5;background:#fff3cf;padding:10px 12px;border-radius:6px;margin:16px 0 0}.access-error{color:#bd451f;font-size:12px;font-weight:700;margin:12px 0 0}.authorized-as{font-size:12px;color:#55645b;background:#e5f3e9;padding:9px 11px;border-radius:6px;margin:-13px 0 18px}
+      .brand{letter-spacing:.2px;font-size:16px}.brand-image{width:38px;height:38px;object-fit:contain;border-radius:50%;background:#fff}.brand-name{font-weight:700}.brand-name span{color:#f36b3d}
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="SJCET CONNECT home"><img class="brand-image" src="sjcet-logo.avif" alt="SJCET logo" /><span class="brand-name">SJCET <span>CONNECT</span></span></a>
+      <button class="menu-button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="navigation"><a href="#events">Events</a><a href="#how-it-works">How it works</a><button class="post-button nav-post">+ Post an event</button></nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">THE CAMPUS NOTICE BOARD, REIMAGINED</p>
+          <h1>Find your next <em>campus moment.</em></h1>
+          <p class="hero-text">Discover workshops, fests, sports, talks, and the people making college unforgettable.</p>
+          <div class="hero-actions"><a class="primary-button" href="#events">Explore events <span>→</span></a><button class="text-button post-button">Post an event</button></div>
+        </div>
+        <aside class="hero-note" aria-label="Upcoming highlight">
+          <div class="tape"></div>
+          <p class="note-label">UP NEXT</p>
+          <p class="note-date">SEP<br><strong>18</strong></p>
+          <h2>Freshers' Night<br>2026</h2>
+          <p>7:00 PM · Main Auditorium</p>
+          <span class="scribble">Don’t miss it!</span>
+        </aside>
+        <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
+      </section>
+
+      <section class="events-section" id="events">
+        <div class="section-heading"><div><p class="eyebrow">WHAT'S HAPPENING</p><h2>On campus</h2></div><p id="event-count" class="event-count"></p></div>
+        <div class="tools">
+          <label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Search events, clubs, or venues" /></label>
+          <div class="filters" role="group" aria-label="Filter events"><button class="filter active" data-filter="All">All</button><button class="filter" data-filter="Cultural">Cultural</button><button class="filter" data-filter="Academic">Academic</button><button class="filter" data-filter="Sports">Sports</button><button class="filter" data-filter="Club">Club</button></div>
+        </div>
+        <div id="event-grid" class="event-grid"></div>
+        <p id="empty-state" class="empty-state" hidden>No events match that search. Try a different keyword.</p>
+      </section>
+
+      <section class="how-section" id="how-it-works">
+        <div><p class="eyebrow">FOR EVERYONE ON CAMPUS</p><h2>One board.<br>Every possibility.</h2></div>
+        <div class="steps"><article><span>01</span><h3>Discover</h3><p>See what is happening across clubs, departments, and campus spaces.</p></article><article><span>02</span><h3>Save your spot</h3><p>Find the details you need and register with the event organizer.</p></article><article><span>03</span><h3>Share the buzz</h3><p>Hosting something great? Put it in front of your entire campus.</p></article></div>
+      </section>
+    </main>
+
+    <footer><a class="brand" href="#top"><img class="brand-image" src="sjcet-logo.avif" alt="SJCET logo" /><span class="brand-name">SJCET <span>CONNECT</span></span></a><p>Made for campus life · 2026</p></footer>
+
+    <dialog id="access-dialog" class="access-dialog">
+      <form id="access-form" method="dialog">
+        <div class="dialog-title"><div><p class="eyebrow">RESTRICTED ACCESS</p><h2>Organizer sign in</h2></div><button class="close-button" type="button" data-close="access-dialog" aria-label="Close">×</button></div>
+        <p class="access-copy">Only verified clubs, departments, and Student Council members can publish notices.</p>
+        <label>College organizer email<input name="email" required type="email" placeholder="organizer@campus.edu" /></label>
+        <label>Organizer passcode<input name="passcode" required type="password" placeholder="Enter your passcode" /></label>
+        <p class="demo-note">Demo access: use any email ending in <strong>@campus.edu</strong> and passcode <strong>POST2026</strong>.</p>
+        <p id="access-error" class="access-error" hidden>That email or passcode is not authorized to post.</p>
+        <button class="primary-button submit-button" type="submit">Verify &amp; continue <span>→</span></button>
+      </form>
+    </dialog>
+
+    <dialog id="event-dialog">
+      <form id="event-form" method="dialog">
+        <div class="dialog-title"><div><p class="eyebrow">ORGANIZER PORTAL</p><h2>Post an event</h2></div><button class="close-button" type="button" data-close="event-dialog" aria-label="Close">×</button></div>
+        <p class="authorized-as">Posting as <strong id="organizer-email"></strong></p><div class="form-grid">
+          <label>Event title<input name="title" required maxlength="55" placeholder="e.g. Poetry Under the Stars" /></label>
+          <label>Hosted by<input name="host" required maxlength="40" placeholder="e.g. Literature Society" /></label>
+          <label>Date<input name="date" required type="date" /></label>
+          <label>Time<input name="time" required type="time" /></label>
+          <label>Venue<input name="venue" required maxlength="45" placeholder="e.g. Central Lawn" /></label>
+          <label>Category<select name="category"><option>Cultural</option><option>Academic</option><option>Sports</option><option>Club</option></select></label>
+          <label class="wide">Short description<textarea name="description" required maxlength="180" placeholder="Tell students what makes this worth showing up for."></textarea></label>
+        </div>
+        <button class="primary-button submit-button" type="submit">Publish to notice board <span>→</span></button>
+      </form>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
